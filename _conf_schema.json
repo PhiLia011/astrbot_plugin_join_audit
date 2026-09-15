@@ -1,0 +1,88 @@
+{
+  "enable": {
+    "description": "启用入群审核",
+    "type": "bool",
+    "default": true
+  },
+  "request_template": {
+    "description": "加群申请通知文案",
+    "type": "text",
+    "hint": "可用变量：{user_id} {nickname} {group_id} {comment}",
+    "default": "有人申请加群，请确认是否放行\n\nQQ：{user_id}\n昵称：{nickname}\n\n引用本消息回复「同意」「拒绝」或「拉黑」"
+  },
+  "approve_reply": {
+    "description": "同意后的回复",
+    "type": "text",
+    "default": "已同意 {nickname}（{user_id}）的加群申请"
+  },
+  "reject_reply": {
+    "description": "拒绝后的回复",
+    "type": "text",
+    "default": "已拒绝 {nickname}（{user_id}）的加群申请"
+  },
+  "blacklist_reply": {
+    "description": "拉黑后的回复",
+    "type": "text",
+    "default": "已拉黑 {nickname}（{user_id}），并拒绝其加群申请"
+  },
+  "blacklist_scope": {
+    "description": "拉黑生效范围",
+    "type": "string",
+    "hint": "本群：只在该群生效；全局：所有受管群都会自动拒绝该用户。",
+    "default": "group",
+    "options": [
+      "group",
+      "global"
+    ],
+    "option_labels": [
+      "仅本群",
+      "全局"
+    ]
+  },
+  "reject_add_request": {
+    "description": "拉黑时同时拒绝其再加群",
+    "type": "bool",
+    "hint": "调用 set_group_kick 时带上 reject_add_request。",
+    "default": true
+  },
+  "auto_kick_blacklist": {
+    "description": "黑名单用户入群时自动踢出",
+    "type": "bool",
+    "default": true
+  },
+  "extra_admins": {
+    "description": "额外可审核的人员 QQ 列表",
+    "type": "list",
+    "default": []
+  },
+  "allow_non_admin": {
+    "description": "允许普通群成员也能处理",
+    "type": "bool",
+    "hint": "默认只有群主/群管理员能回复同意、拒绝、拉黑。开启后，群里任何人都可以处理这条通知。",
+    "default": false
+  },
+  "non_admin_whitelist": {
+    "description": "允许普通成员处理的群（白名单）",
+    "type": "list",
+    "hint": "只有这些群允许普通成员处理审核；留空表示所有群都允许（受总开关限制）。",
+    "default": []
+  },
+  "non_admin_blacklist": {
+    "description": "禁止普通成员处理的群（黑名单）",
+    "type": "list",
+    "hint": "这些群不允许普通成员处理，优先于白名单。",
+    "default": []
+  },
+  "whitelist_groups": {
+    "description": "生效群聊白名单",
+    "type": "list",
+    "hint": "仅这些群启用；留空表示全部群生效。",
+    "default": []
+  },
+  "blacklist_groups": {
+    "description": "生效群聊黑名单",
+    "type": "list",
+    "hint": "这些群不启用，优先于白名单。",
+    "default": []
+  }
+}
